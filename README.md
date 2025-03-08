@@ -1,71 +1,105 @@
-# Nextcloud M3U Playlist Generator
+# 🎬 Nextcloud M3U Generator
 
-A Python script to create M3U playlists from Nextcloud shared folders containing video files. This tool allows you to generate playlists that work with video players like VLC, making it easy to stream your videos directly from Nextcloud.
+A Python tool to easily create video playlists from Nextcloud shared links.
 
-## Features
+[![Python](https://img.shields.io/badge/Python-3.6%2B-blue)](https://www.python.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-- 🎬 Automatic detection of video files in Nextcloud shared folders
-- 📋 Generates M3U playlists with direct streaming links
-- 🎨 Interactive terminal UI with color-coded output
-- 🌐 Supports both automatic (using Playwright) and manual HTML parsing
-- 🔍 Debug mode with detailed logging
-- 📁 Support for subfolder paths within shared folders
+## 📋 Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Troubleshooting](#troubleshooting)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Requirements
+## 📊 Overview
 
-- Python 3.6+
-- Optional: Playwright (for automatic HTML fetching)
+This tool enables you to automatically create M3U playlists from Nextcloud shared links. It scans the content of a Nextcloud share for video files and creates an M3U file with direct links that can be played in VLC or other media players.
 
-## Installation
+![Terminal UI Screenshot](screenshots/terminal_ui.png)
 
-1. Clone this repository:
+## ✨ Features
+
+- 🎨 Interactive, colorful terminal user interface
+- 🌐 Automatic extraction of video files from Nextcloud shares
+- 🎬 Support for common video formats (MKV, MP4, AVI, etc.)
+- 🔄 Automatic detection of Nextcloud URL structure
+- 📝 Creation of M3U playlists with direct download links
+- 📁 Optional path filtering for specific subfolders
+- 🔍 Debug mode for troubleshooting
+- ⚙️ Manual file input option (if automatic detection fails)
+
+## 🚀 Installation
+
+### Prerequisites
+
+- Python 3.6 or higher
+- pip (Python Package Installer)
+
+### Installing Dependencies
+
 ```bash
-git clone https://github.com/yourusername/nextcloud-playlist.git
-cd nextcloud-playlist
+# Clone the repository
+git clone https://github.com/yourusername/nextcloud-m3u-generator.git
+cd nextcloud-m3u-generator
+
+# Install required packages
+pip install -r requirements.txt
+
+# Install Playwright browsers (will be offered automatically on first run)
+python -m playwright install chromium
 ```
 
-2. Install the required dependencies:
-```bash
-pip install playwright
-python -m playwright install  # Only needed for automatic HTML fetching
-```
+## 📝 Usage
 
-## Usage
+### Quick Start
 
-Run the script:
 ```bash
 python nextcloud_m3u_generator.py
 ```
 
-The script will guide you through:
-1. Entering your Nextcloud share URL
-2. Choosing between automatic or manual HTML input
-3. Generating the M3U playlist
+### Step-by-Step Guide
 
-### Manual Mode
-If you don't want to use automatic HTML fetching, you can:
-- Paste HTML content directly
-- Load HTML from a file
-- Enter video filenames manually
+1. Run the script and follow the on-screen instructions
+2. Enter the complete Nextcloud share link (e.g., `https://cloud.example.com/s/abcdefg123456`)
+3. Optional: Provide a subpath if you only want to use files from a specific folder in the share
+4. Choose whether to automatically fetch HTML content (recommended) or input it manually
+5. Review the detected video files and adjust the list if needed
+6. Enter a name for the playlist file
+7. Done! The M3U playlist will be created in the current directory
 
-## Generated Playlist
+### Using the Playlist in VLC
 
-The script creates an M3U playlist file containing direct streaming links to your videos. This playlist can be opened in media players like VLC.
+1. Open VLC Media Player
+2. Open the created .m3u file (File → Open)
+3. If asked for credentials:
+   - Username: The share token (displayed automatically)
+   - Password: The password for the share (if any)
+4. Optional: Save the credentials in VLC under Tools → Preferences → Input/Codecs
 
-When using VLC:
-1. Open the generated .m3u file
-2. If prompted, enter credentials:
-   - Username: [share token]
-   - Password: [share password if any]
-3. Optionally save credentials in VLC under Tools → Preferences → Input/Codecs
+## ⚠️ Troubleshooting
 
-## Debug Features
+- **Issue**: No video files found
+  - **Solution**: Use the manual file entry option or check the debug HTML file in the `debug_files` folder
 
-The script creates a `debug_files` directory containing:
-- HTML content for inspection
-- List of found video files
-- Other debug information
+- **Issue**: Playwright is not installed
+  - **Solution**: Install Playwright manually with `pip install playwright` and `python -m playwright install`
 
-## License
+- **Issue**: VLC keeps asking for credentials
+  - **Solution**: Save the credentials in VLC under Tools → Preferences → Input/Codecs → Save credentials
 
-MIT License - feel free to modify and share!
+## 👨‍💻 Contributing
+
+Contributions are welcome! You can:
+
+1. Fork this repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📜 License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for more information.
