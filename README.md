@@ -42,14 +42,11 @@ This tool enables you to automatically create M3U playlists from Nextcloud share
 
 ```bash
 # Clone the repository
-git https://github.com/UntoastedToast/Nextcloud-M3U-Generator.git
+git clone https://github.com/UntoastedToast/Nextcloud-M3U-Generator.git
 cd nextcloud-m3u-generator
 
 # Install required packages
 pip install -r requirements.txt
-
-# Install Playwright browsers (will be offered automatically on first run)
-python -m playwright install chromium
 ```
 
 ## 📝 Usage
@@ -85,7 +82,17 @@ python nextcloud_m3u_generator.py
   - **Solution**: Use the manual file entry option or check the debug HTML file in the `debug_files` folder
 
 - **Issue**: Playwright is not installed
-  - **Solution**: Install Playwright manually with `pip install playwright` and `python -m playwright install`
+  - **Solution**: If automatic installation fails, install Playwright manually:
+    ```bash
+    pip install playwright
+    python -m playwright install
+    ```
+    - For Linux users, you might need to install additional system dependencies:
+      ```bash
+      sudo apt update
+      sudo apt install -y libgbm-dev libasound2 libnspr4 libnss3
+      ```
+    - For more information, see [Playwright's installation guide](https://playwright.dev/docs/intro)
 
 - **Issue**: VLC keeps asking for credentials
   - **Solution**: Save the credentials in VLC under Tools → Preferences → Input/Codecs → Save credentials
