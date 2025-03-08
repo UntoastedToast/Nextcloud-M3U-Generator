@@ -42,7 +42,7 @@ This tool enables you to automatically create M3U playlists from Nextcloud share
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/nextcloud-m3u-generator.git
+git https://github.com/UntoastedToast/Nextcloud-M3U-Generator.git
 cd nextcloud-m3u-generator
 
 # Install required packages
